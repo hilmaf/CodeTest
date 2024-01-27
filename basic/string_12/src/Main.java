@@ -2,39 +2,24 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
+        //12번
         Scanner sc = new Scanner(System.in);
         int num = sc.nextInt(); sc.nextLine();
         String str = sc.nextLine();
 
-        List<String> codes = new ArrayList<String>();
+        List<String> binaries = new ArrayList<String>();
         for (int i = 0; i < num; i++) {
-            codes.add(str.substring(0, 7));
+            binaries.add(str.substring(0, 7).replace('*', '0').replace('#', '1'));
             str = str.substring(7);
         }
 
         Main m = new Main();
-        String result = m.solution(codes);
+        String result = m.solution(binaries);
         System.out.println(result);
 
     }
 
-    public String solution(List<String> codes) {
-
-        Iterator<String> iterator = codes.iterator();
-        List<String> binaries = new ArrayList<String>();
-
-        while(iterator.hasNext()) {
-            StringBuilder binary = new StringBuilder();
-            char[] chars = iterator.next().toCharArray();
-            for(char x : chars) {
-                switch(x) {
-                    case '#': binary.append(1); break;
-                    case '*': binary.append(0); break;
-                }
-            }
-
-            binaries.add(binary.toString());
-        }
+    public String solution(List<String> binaries) {
 
         Iterator<String> binaryIterator = binaries.iterator();
         StringBuilder resultBuilder = new StringBuilder();
