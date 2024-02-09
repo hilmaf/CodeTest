@@ -7,11 +7,13 @@ public class Main {
         String N_ = sc.nextLine();
         int N = Integer.parseInt(N_);
 
+        // A의 가위바위보
         int[] rspA = new int[N];
         for (int i = 0; i < N; i++) {
             rspA[i] = sc.nextInt();
         }
 
+        // B의 가위바위보
         int[] rspB = new int[N];
         for (int i = 0; i < N; i++) {
             rspB[i] = sc.nextInt();
@@ -29,16 +31,12 @@ public class Main {
     private String[] solution(int N, int[] rspA, int[] rspB) {
         String[] results = new String[N];
         for (int i = 0; i < N; i++) {
-            if(rspA[i] == 3 && rspB[i] == 1) {
-                results[i] = "B";
-            } else if(rspA[i] == 1 && rspB[i] == 3) {
-                results[i] = "A";
-            } else if(rspA[i] > rspB[i]) {
-                results[i] = "A";
-            } else if(rspA[i] < rspB[i]) {
-                results[i] = "B";
-            } else {
-                results[i] = "D";
+            switch(rspA[i] - rspB[i]) {
+                case -2 :
+                case 1 : results[i] = "A"; break;
+                case 2 :
+                case -1 : results[i] = "B"; break;
+                case 0 : results[i] = "D"; break;
             }
         }
 
