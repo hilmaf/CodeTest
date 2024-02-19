@@ -1,13 +1,11 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
-import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
-        // 1번. 두 배열 합치기
+        // 2번. 공통원소 구하기
         Scanner sc = new Scanner(System.in);
         int arr1Length = Integer.parseInt(sc.next());
         int[] arr1 = new int[arr1Length];
@@ -21,29 +19,28 @@ public class Main {
             arr2[i] = Integer.parseInt(sc.next());
         }
 
-        /////////////////////////////////////////////////////////////////
-        // 투포인터 알고리즘
+        Arrays.sort(arr1);
+        Arrays.sort(arr2);
 
+        //////////////////////////////////////////////////////////////////
+
+        ArrayList<Integer> answer = new ArrayList<Integer>();
         int pnt1 = 0, pnt2 = 0;
-        ArrayList<Integer> answerList = new ArrayList<Integer>();
 
-        while(pnt1<arr1Length && pnt2<arr2Length) {
-            if(arr1[pnt1] <= arr2[pnt2]) {
-                answerList.add(arr1[pnt1++]);
+        while(pnt1 < arr1.length && pnt2 < arr2.length) {
+            if(arr1[pnt1] == arr2[pnt2]) {
+                answer.add(arr1[pnt1]);
+                pnt1++;
+                pnt2++;
+            } else if(arr1[pnt1] < arr2[pnt2]) {
+                pnt1++;
             } else {
-                answerList.add(arr2[pnt2++]);
+                pnt2++;
             }
         }
 
-        while(pnt1<arr1Length) {
-            answerList.add(arr1[pnt1++]);
-        }
 
-        while(pnt2<arr2Length) {
-            answerList.add(arr2[pnt2++]);
-        }
-
-        for(int x : answerList) {
+        for(int x : answer) {
             System.out.print(x + " ");
         }
     }
