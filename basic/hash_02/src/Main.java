@@ -24,6 +24,7 @@ public class Main {
         for(char x : str2.toCharArray()) {
             if(!strMap.containsKey(x) || strMap.get(x) == 0) {
                 answer = "NO";
+                break;
             }
             strMap.put(x, strMap.get(x)-1);
         }
