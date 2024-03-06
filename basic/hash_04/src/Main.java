@@ -11,35 +11,35 @@ public class Main {
 
         /////////////////////////////////////////
 
-        // target을 바탕으로 map 생성
-        HashMap<Character, Integer> map = new HashMap<>();
+        // target Map
+        HashMap<Character, Integer> targetMap = new HashMap<>();
         for(char x : target.toCharArray()) {
-            map.put(x, map.getOrDefault(x, 0));
+            targetMap.put(x, targetMap.getOrDefault(x, 0)+1);
         }
 
         // 슬라이딩 윈도우
         char[] strArr = str.toCharArray();
         int lt = 0;
         int answer = 0;
+        HashMap<Character, Integer> strMap = new HashMap<>();
         for (int rt = 0; rt < strArr.length; rt++) {
-            map.put(strArr[rt], map.getOrDefault(strArr[rt], -1)+1);
+            strMap.put(strArr[rt], strMap.getOrDefault(strArr[rt], 0)+1);
 
-            if(rt-lt+1 == target.length()) {
-                if(map.size() == target.length() && !map.containsValue(0)) {
-                    answer++;
+                if(rt-lt+1 == target.length()) {
+                    if(strMap.equals(targetMap)) {
+                        answer++;
+                    }
+                    strMap.put(strArr[lt], strMap.get(strArr[lt])-1);
+
+                    if(strMap.get(strArr[lt])==0) {
+                        strMap.remove(strArr[lt]);
+                    }
+
+                    lt++;
                 }
-
-                map.put(strArr[lt], map.get(strArr[lt])-1);
-
-                if(map.get(strArr[lt])==-1) {
-                    map.remove(strArr[lt]);
-                }
-
-                lt++;
-            }
 
         }
-
         System.out.println(answer);
-    }
+        }
+
 }
