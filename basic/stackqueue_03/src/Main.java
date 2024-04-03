@@ -33,7 +33,6 @@ public class Main {
                 j++;
             }
 
-
             if(!stack.isEmpty() && stack.peek() == board[j][moves[i]-1]) {
                 board[j][moves[i]-1] = 0;
                 stack.pop();

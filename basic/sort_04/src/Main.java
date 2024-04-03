@@ -11,11 +11,8 @@ public class Main {
         for(int i = 0; i < N; i++) {
             tasks[i] = sc.nextInt();
         }
-
         ///////////////////////////////////////
-
         int[] cache = new int[size]; // 캐시 배열
-
         // cache 초기화
         for(int i = 0; i < size; i++) {
             cache[i] = 0;
@@ -43,20 +40,7 @@ public class Main {
                 }
             }
             cache[0] = task;
-//                if(cache[j] == tasks[i]) {
-//                    for(int k = j; k >= 1; k--) {
-//                        cache[k] = cache[k-1];
-//                    }
-//
-//                    cache[j] = cache[j-1]; // 한칸씩 뒤로 미루기
-//                } else {
-//                    cache[j] = cache[j-1]; // 한칸씩 뒤로 미루기
-//                }
-//
-//            }
-
-        }
-
+       }
         // 출력하기
         for(int i = 0; i < size; i++) {
             System.out.print(cache[i] + " ");
