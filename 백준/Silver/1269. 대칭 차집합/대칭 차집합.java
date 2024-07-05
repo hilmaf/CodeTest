@@ -20,7 +20,7 @@ public class Main {
             aSet.add(x);
         }
         
-        // 집합 B 원소 채우기 + B 교집합에 해당하는 원소 value값 변경
+        // 집합 B 원소 채우기 + 집합 A와의 교집합일 시 추가 X, 집합 A에서 삭제
         StringTokenizer st3 = new StringTokenizer(br.readLine());
         Set<Integer> bSet = new HashSet<>();
         for(int i = 0; i < bSize; i++) {
@@ -29,6 +29,7 @@ public class Main {
             else bSet.add(x);
         }
         
+        // 남아있는 각 집합의 원소들이 차집합이므로 두 집합의 크기 더하기
         System.out.println(aSet.size() + bSet.size());
         
     }
